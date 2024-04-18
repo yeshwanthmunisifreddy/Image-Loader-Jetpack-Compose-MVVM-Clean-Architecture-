@@ -45,9 +45,7 @@ fun AsyncImage(
     LaunchedEffect(url) {
          job = scope.launch {
             state = try {
-                val bitmap = withContext(Dispatchers.Main.immediate) {
-                    downloader.execute(url)
-                }
+                val bitmap =  downloader.execute(url)
                 if (bitmap != null) {
                     ImageState.Success(bitmap)
                 } else {
