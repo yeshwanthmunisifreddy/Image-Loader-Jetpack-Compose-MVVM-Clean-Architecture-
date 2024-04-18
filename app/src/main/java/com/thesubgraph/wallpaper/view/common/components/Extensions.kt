@@ -1,8 +1,11 @@
 package com.thesubgraph.wallpaper.view.common.components
 
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.grid.LazyGridState
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState
 
 fun LazyStaggeredGridState.isScrolledToEnd() =
     layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1
+fun Context.showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}

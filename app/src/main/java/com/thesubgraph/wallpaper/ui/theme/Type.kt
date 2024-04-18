@@ -39,4 +39,11 @@ val TextStyle_Size18_Weight400: TextStyle
         fontSize = 18.sp,
         fontFamily = FontFamily.Default
     )
+val TextStyle_Size16_Weight700: TextStyle
+    get() = TextStyle(
+        fontWeight = FontWeight.W700,
+        fontSize = 16.sp,
+        fontFamily = FontFamily.Default
+    )
+
 

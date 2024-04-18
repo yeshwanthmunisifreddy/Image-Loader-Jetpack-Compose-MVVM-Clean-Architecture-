@@ -1,6 +1,5 @@
 package com.thesubgraph.wallpaper.viewmodel.screens
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.thesubgraph.wallpaper.data.common.ValueResult
@@ -17,7 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val photoUseCase: PhotoUseCase,
-    val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _viewState: MutableStateFlow<ViewState<Unit>> =
         MutableStateFlow(ViewState.Initial)
@@ -32,11 +30,11 @@ class HomeViewModel @Inject constructor(
 
     fun getPhotos(refresh: Boolean = false) {
         viewModelScope.launch {
+            _viewState.value = ViewState.Loading
             if (refresh) {
                 pagination = PaginationState()
                 _photos.value = listOf()
             }
-
             if (pagination.reachedEnd) {
                 return@launch
             }
